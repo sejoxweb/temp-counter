@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "private": true,
   "dependencies": {
+    "@semantic-release/git": "^10.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -42,5 +43,21 @@
   },
   "devDependencies": {
     "semantic-release": "^19.0.5"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/git"
+    ]
   }
 }
