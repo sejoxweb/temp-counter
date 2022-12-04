@@ -16,9 +16,6 @@ pipeline {
             }
         }
         stage('Release') {
-            environment {
-        GH_TOKEN  = credentials('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')
-    }
             steps {
                 sh '''
                 echo GH_TOKEN
