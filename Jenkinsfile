@@ -5,15 +5,27 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    environment {
+        GH_TOKEN  = credentials('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')
+    }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'npm install'
+                sh '''
+                # Configure your test steps here (checkout, npm install, tests etc)
+                npm install
+                '''
             }
         }
-        stage('Delivery') { 
+        stage('Release') {
+            tools {
+                nodejs "node LTS"
+            }
             steps {
-                sh 'GH_TOKEN=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 npx semantic-release --debug' 
+                sh '''
+                # Run optional required steps before releasing
+                npx semantic-release
+                '''
             }
         }
     }
