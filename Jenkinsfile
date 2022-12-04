@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        GH_TOKEN  = credentials('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')
+        GH_TOKEN  = "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"
     }
     stages {
         stage('Build') {
