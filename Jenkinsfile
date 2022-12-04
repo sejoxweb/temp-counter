@@ -18,9 +18,6 @@ pipeline {
             }
         }
         stage('Release') {
-            tools {
-                nodejs "node LTS"
-            }
             steps {
                 sh '''
                 # Run optional required steps before releasing
