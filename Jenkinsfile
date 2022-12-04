@@ -5,9 +5,6 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    environment {
-        CC = 'clang'
-            }
     stages {
         stage('Build') {
             steps {
@@ -15,11 +12,8 @@ pipeline {
             }
         }
         stage('Delivery') { 
-            environment {
-                GH_TOKEN = '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'
-            }
             steps {
-                sh 'npx semantic-release' 
+                sh 'GH_TOKEN=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 npx semantic-release' 
             }
         }
     }
