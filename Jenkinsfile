@@ -1,29 +1,28 @@
+// The release stage in the pipeline will run only if the test stage in the pipeline is successful
 pipeline {
-    agent {
-        docker {
-            image 'node:16-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
     environment {
-        CI = 'true'
+        GH_TOKEN  = credentials('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')
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
         stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh'
+                sh '''
+                # Configure your test steps here (checkout, npm install, tests etc)
+                npm install
+                npm test
+                '''
             }
         }
-        stage('Deliver') {
+        stage('Release') {
+            tools {
+                nodejs "node LTS"
+            }
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh '''
+                # Run optional required steps before releasing
+                npx semantic-release
+                '''
             }
         }
     }
