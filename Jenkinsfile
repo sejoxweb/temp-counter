@@ -7,7 +7,7 @@ pipeline {
         }
     }
     environment {
-        CI:'true'
+        CI='true'
         GH_TOKEN  = "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"
     }
     stages {
