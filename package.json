@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://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@github.com/sejoxweb/temp-counter.git"
+    "url": "https://github.com/sejoxweb/temp-counter.git"
   },
   "devDependencies": {
     "semantic-release": "^19.0.5"
