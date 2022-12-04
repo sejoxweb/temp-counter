@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Delivery') { 
             steps {
-                sh 'GH_TOKEN=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 npx semantic-release' 
+                sh 'GH_TOKEN=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 npx semantic-release --debug' 
             }
         }
     }
