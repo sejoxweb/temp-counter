@@ -20,7 +20,7 @@ pipeline {
                 sh '''
                 echo GH_TOKEN
                 # Run optional required steps before releasing
-                npx semantic-release
+                npx semantic-release --debug
                 '''
             }
         }
