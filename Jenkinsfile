@@ -5,20 +5,14 @@ pipeline {
         GH_TOKEN  = credentials('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')
     }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh '''
-                # Configure your test steps here (checkout, npm install, tests etc)
-                npm install
-                '''
+                sh 'npm install'
             }
         }
         stage('Release') {
             steps {
-                sh '''
-                # Run optional required steps before releasing
-                npx semantic-release
-                '''
+                sh 'npx semantic-release'
             }
         }
     }
